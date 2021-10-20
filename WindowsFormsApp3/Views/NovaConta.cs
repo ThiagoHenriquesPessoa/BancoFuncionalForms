@@ -17,7 +17,6 @@ namespace WindowsFormsApp3.Views
     public partial class NovaConta : Form
     {
         DataInsert DInsert = new DataInsert();
-
         public NovaConta()
         {
             Random random = new Random();

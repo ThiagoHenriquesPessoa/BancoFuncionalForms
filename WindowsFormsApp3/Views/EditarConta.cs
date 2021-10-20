@@ -48,6 +48,7 @@ namespace WindowsFormsApp3.Views
 
                 string strSql = "SELECT * FROM CONTABANCARIA WHERE NUMERODACONTA = @NUMERODACONTA";
                 Comando = new MySqlCommand(strSql, Conexao);
+
                 Comando.Parameters.AddWithValue("@NUMERODACONTA", txb_EdNConta.Text);
 
                 Conexao.Open();
