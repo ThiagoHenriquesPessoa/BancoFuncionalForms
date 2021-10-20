@@ -9,6 +9,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp3.Model;
 using WindowsFormsApp3.Validacao;
 
 namespace WindowsFormsApp3.Views
@@ -22,6 +23,8 @@ namespace WindowsFormsApp3.Views
         public static MySqlCommand Comando;
 
         public static MySqlDataReader Dr;
+
+        CheckData ED = new CheckData();
         public EditarConta()
         {
             InitializeComponent();
@@ -42,54 +45,15 @@ namespace WindowsFormsApp3.Views
 
         private void btn_ECConfirmar_Click(object sender, EventArgs e)
         {
-            try
+            bool check = ED.CheckDatabase(txb_EdNConta.Text, txb_EdSenha.Text);
+            if (check == true)
             {
-                Conexao = new MySqlConnection("server=localhost;user id=Thiago;database=contafuncionaldb; password=Rayane18@; port=3306");
-
-                string strSql = "SELECT * FROM CONTABANCARIA WHERE NUMERODACONTA = @NUMERODACONTA";
-                Comando = new MySqlCommand(strSql, Conexao);
-
-                Comando.Parameters.AddWithValue("@NUMERODACONTA", txb_EdNConta.Text);
-
-                Conexao.Open();
-
-                Dr = Comando.ExecuteReader();
-                Dr.Read();
-
-                string numeroConta = Convert.ToString(Dr["NUMERODACONTA"]);
-                string senha = Convert.ToString(Dr["SENHA"]);
-                SetaSenha(txb_EdSenha.Text);
-                
-                if (txb_EdNConta.Text == numeroConta && txb_EdSenha.Text == senha)
-                {
-
-                    txb_EdNConta.ReadOnly = true;
-                    txb_EdSenha.ReadOnly = true;
-                    btn_ECConfirmar.Visible = false;
-                    btn_ECCancelar.Visible = false;
-                    AbrirFormPainel(new EdConta(txb_EdNConta.Text));
-                   
-                }
+                txb_EdNConta.ReadOnly = true;
+                txb_EdSenha.ReadOnly = true;
+                btn_ECConfirmar.Visible = false;
+                btn_ECCancelar.Visible = false;
+                AbrirFormPainel(new EdConta(txb_EdNConta.Text));
             }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                Conexao.Close();
-                Conexao = null;
-                Comando = null;
-            }
-        }
-        public static string SetaSenha(string senha)
-        {
-            senha = senha.ValidacaoString();
-            if (!Regex.IsMatch(senha, @"^(?=.*?[a-z])(?=.*?[0-9]).{8,}$"))
-            {
-                throw new Exception("Senha invalida");
-            }
-            return senha;
         }
 
         private void btn_Fecha_Click(object sender, EventArgs e)
