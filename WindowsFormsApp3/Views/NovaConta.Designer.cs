@@ -87,7 +87,7 @@ namespace WindowsFormsApp3.Views
             this.btn_NCSalvar.TabIndex = 5;
             this.btn_NCSalvar.Text = "Salvar";
             this.btn_NCSalvar.UseVisualStyleBackColor = false;
-            this.btn_NCSalvar.Click += new System.EventHandler(this.btn_NovaRenda_Click);
+            this.btn_NCSalvar.Click += new System.EventHandler(this.btn_NovaConta_Click);
             // 
             // label1
             // 

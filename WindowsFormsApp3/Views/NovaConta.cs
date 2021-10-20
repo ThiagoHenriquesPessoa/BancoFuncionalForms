@@ -16,11 +16,8 @@ namespace WindowsFormsApp3.Views
 {
     public partial class NovaConta : Form
     {
-        //Conexão com o banco
-        public static MySqlConnection Conexao;
+        DataInsert DInsert = new DataInsert();
 
-        //responsavel pelas instruções a serem executadas
-        public static MySqlCommand Comando;
         public NovaConta()
         {
             Random random = new Random();
@@ -30,42 +27,22 @@ namespace WindowsFormsApp3.Views
 
             txt_NumeroDC.Text = Convert.ToString(numeroConta);
         }
-
-        private void btn_NovaRenda_Click(object sender, EventArgs e)
+        private void btn_NovaConta_Click(object sender, EventArgs e)
         {
-            try
-            {
-                Conexao = new MySqlConnection("server=localhost;user id=Thiago;database=contafuncionaldb; password=Rayane18@; port=3306");
+           DInsert.InsertToDatabase(
+               txt_NumeroDC.Text,
+               txt_Saldo.Text,
+               txt_Senha.Text,
+               txt_NomeC.Text,
+               txt_CPF.Text,
+               txt_Logradouro.Text,
+               txt_NumeroR.Text,
+               txt_CEP.Text,
+               txt_Cidade.Text,
+               txt_Estado.Text);
+            MessageBox.Show("Account saved successfully");
 
-                string strSql = "INSERT INTO CONTABANCARIA (NUMERODACONTA, SALDO, SENHA, NOME, CPF, LOGRADOURO, NUMERODARESIDENCIA, CEP, CIDADE, ESTADO) VALUES (@NUMERODACONTA, @SALDO, @SENHA, @NOME, @CPF, @LOGRADOURO, @NUMERODARESIDENCIA, @CEP, @CIDADE, @ESTADO)";
-                Comando = new MySqlCommand(strSql, Conexao);
-                Comando.Parameters.AddWithValue("@NUMERODACONTA", txt_NumeroDC.Text.ValidacaoString());
-                Comando.Parameters.AddWithValue("@SALDO", txt_Saldo.Text.ValidacaoString());
-                Comando.Parameters.AddWithValue("@SENHA", SetaSenha(txt_Senha.Text));
-                Comando.Parameters.AddWithValue("@NOME", txt_NomeC.Text.ValidacaoString());
-                Comando.Parameters.AddWithValue("@CPF", txt_CPF.Text.ValidacaoString());
-                Comando.Parameters.AddWithValue("@LOGRADOURO", txt_Logradouro.Text.ValidacaoString());
-                Comando.Parameters.AddWithValue("@NUMERODARESIDENCIA", txt_NumeroR.Text.ValidacaoString());
-                Comando.Parameters.AddWithValue("@CEP", txt_CEP.Text.ValidacaoString());
-                Comando.Parameters.AddWithValue("@CIDADE", txt_Cidade.Text.ValidacaoString());
-                Comando.Parameters.AddWithValue("@ESTADO", txt_Estado.Text.ValidacaoString());
-
-                Conexao.Open();
-
-                Comando.ExecuteNonQuery();
-            }
-            catch (Exception Ex)
-            {
-                MessageBox.Show(Ex.Message);
-            }
-            finally
-            {
-                MessageBox.Show("Conta salvos com sucesso!");
-                Limpa();
-                Conexao.Close();
-                Conexao = null;
-                Comando = null;
-            }
+            Limpa();
         }
         private void Limpa()
         {
@@ -83,24 +60,13 @@ namespace WindowsFormsApp3.Views
             txt_Cidade.Clear();
             txt_Estado.Clear();
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             Limpa();
         }
-
         private void btn_Fecha_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-        public static string SetaSenha(string senha)
-        {
-            senha = senha.ValidacaoString();
-            if (!Regex.IsMatch(senha, @"^(?=.*?[a-z])(?=.*?[0-9]).{8,}$"))
-            {
-                throw new Exception("Senha invalida");
-            }
-            return senha;
-        }
+        } 
     }
 }

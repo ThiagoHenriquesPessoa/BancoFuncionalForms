@@ -47,7 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\ContaBancaria.cs" />
+    <Compile Include="Model\ConnectionDB.cs" />
     <Compile Include="Validacao\Validacao.cs" />
     <Compile Include="Views\AcessarConta.cs">
       <SubType>Form</SubType>

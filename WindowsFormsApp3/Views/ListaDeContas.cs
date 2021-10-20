@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp3.Model;
 
 namespace WindowsFormsApp3.Views
 {
@@ -21,9 +22,16 @@ namespace WindowsFormsApp3.Views
         public static MySqlCommand Comando;
 
         public static MySqlDataAdapter Adapter;
+
+        public DataTable dataTable = new DataTable();
+
+        
         public ListaDeContas()
         {
             InitializeComponent();
+            
+            CarregarDados();
+
             try
             {
                 Conexao = new MySqlConnection("server=localhost;user id=Thiago;database=contafuncionaldb; password=Rayane18@; port=3306");
@@ -31,7 +39,7 @@ namespace WindowsFormsApp3.Views
                 string strSql = "SELECT NUMERODACONTA, NOME FROM CONTABANCARIA";
                 Adapter = new MySqlDataAdapter(strSql, Conexao);
 
-                DataTable dataTable = new DataTable();
+                
 
                 Adapter.Fill(dataTable);
 
@@ -48,6 +56,16 @@ namespace WindowsFormsApp3.Views
                 Conexao = null;
                 Comando = null;
             }
+        }
+
+        private void CarregarDados()
+        {
+            dataTable.Columns.Add("Número da Conta", typeof(int));
+            dataTable.Columns.Add("Nome do cliente", typeof(string));
+
+            dataTable.Rows.Add(new object[] { 123465, "Thiago"});
+
+            dgv_ListaDeDados.DataSource = dataTable;
         }
 
         private void btn_Fecha_Click(object sender, EventArgs e)

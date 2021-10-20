@@ -14,5 +14,15 @@ namespace WindowsFormsApp3.Validacao
         {
             return string.IsNullOrWhiteSpace(texto) ? throw new Exception("Propriedade deve esta preenchida.") : texto;
         }
+
+        public static string SetaSenha(this string senha)
+        {
+            senha = senha.ValidacaoString();
+            if (!Regex.IsMatch(senha, @"^(?=.*?[a-z])(?=.*?[0-9]).{8,}$"))
+            {
+                throw new Exception("Senha invalida");
+            }
+            return senha;
+        }
     }
 }
