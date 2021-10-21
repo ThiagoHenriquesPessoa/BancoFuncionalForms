@@ -1,15 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp3.Model;
-using WindowsFormsApp3.Validacao;
 
 namespace WindowsFormsApp3.Views
 {
@@ -23,27 +15,40 @@ namespace WindowsFormsApp3.Views
 
         public static MySqlDataReader Dr;
 
+        private string AccountNumber;
+
         EditData ED = new EditData();
+        SaveData SD = new SaveData();
         public EdConta(string numeroConta)
         {
-            InitializeComponent();
-            ED.EditDatabase(numeroConta);
 
-            txt_Logradouro.Text = ED.PublicPlace;
-            txt_NumeroR.Text = ED.HouseNumber;
-            txt_CEP.Text = ED.Cep;
-            txt_Cidade.Text = ED.City;
-            txt_Estado.Text = ED.State;
+            AccountNumber = numeroConta;
+            InitializeComponent();
+            string[] data = ED.EditDatabase(AccountNumber).Split(',');
+
+            txt_Logradouro.Text = data[0];
+            txt_NumeroR.Text = data[1];
+            txt_CEP.Text = data[2];
+            txt_Cidade.Text = data[3];
+            txt_Estado.Text = data[4];
         }
 
         private void btn_NCSalvar_Click(object sender, EventArgs e)
         {
-           
+            SD.SaveEditedData(
+                AccountNumber,
+                txt_Logradouro.Text,
+                txt_NumeroR.Text,
+                txt_CEP.Text,
+                txt_Cidade.Text,
+                txt_Estado.Text);
+            MessageBox.Show("Dados salvos com sucesso!");
+            Close();
         }
 
         private void btn_NCCancelar_Click(object sender, EventArgs e)
         {
-
+            Close();
         }
 
         private void EdConta_Load(object sender, EventArgs e)

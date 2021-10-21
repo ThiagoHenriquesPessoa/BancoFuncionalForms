@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using System.Data;
 using System.Windows.Forms;
 using WindowsFormsApp3.Validacao;
-using System.Text.RegularExpressions;
 
 namespace WindowsFormsApp3.Model
 {
@@ -72,7 +67,7 @@ namespace WindowsFormsApp3.Model
                 finally
                 {
                     Conn.Close();
-                    Conn = null;
+                    //Conn = null;
                     Comm = null;
                 }
             }
@@ -82,6 +77,7 @@ namespace WindowsFormsApp3.Model
 
 
     }
+    //Verifica se o nuúmero e a senha da conta estão corretos
     class CheckData : ConnectionDB
     {
         public bool CheckDatabase(string accountNumber, string password)
@@ -118,21 +114,23 @@ namespace WindowsFormsApp3.Model
                 finally
                 {
                     Conn.Close();
-                    Conn = null;
+                    //Conn = null;
                     Comm = null;
                 }
                 return check;
             }
         }
     }
+    //separa os campos da conta que podem ser editados
     class EditData : ConnectionDB
     {
-        public string PublicPlace { get; set; }
-        public string HouseNumber { get; set; }
-        public string Cep { get; set; }
-        public string City { get; set; }
-        public string State { get; set; }
-        public void EditDatabase(string accountNumber)
+        private string PublicPlace;
+        private string HouseNumber;
+        private string Cep;
+        private string City;
+        private string State;
+
+        public string EditDatabase(string accountNumber)
         {
 
             using (Comm = new MySqlCommand())
@@ -163,38 +161,75 @@ namespace WindowsFormsApp3.Model
                 }
                 finally
                 {
-
+                    
                     Conn.Close();
-                    Conn = null;
+                    //Conn = null;
                     Comm = null;
                 }
+                return PublicPlace + "," + HouseNumber + "," + Cep + "," + City + "," + State;
             }
         }
     }
+    //salva os dados que foram editados
     class SaveData : ConnectionDB
     {
-        public void SaveEditedData()
+        public void SaveEditedData(string accountNumber, string publicPlace, string houseNumber, string cep, string city, string state)
         {
             using (Comm = new MySqlCommand())
             {
                 try
                 {
+                    //string connectionString = "server=localhost;user id=Thiago;database=contafuncionaldb; password=Rayane18@; port=3306";
+
+                    //Conn = new MySqlConnection(connectionString);
                     Conn.Open();
                     string instructionInsertSql = "UPDATE CONTABANCARIA SET LOGRADOURO = @LOGRADOURO, NUMERODARESIDENCIA = @NUMERODARESIDENCIA, CEP = @CEP, CIDADE = @CIDADE, ESTADO = @ESTADO WHERE NUMERODACONTA = @NUMERODACONTA";
                     Comm.CommandText = instructionInsertSql;
                     Comm.CommandType = CommandType.Text;
                     Comm.Connection = Conn;
 
-                    Comm.Parameters.AddWithValue("@NUMERODACONTA", numeroConta);
-                    Comm.Parameters.AddWithValue("@LOGRADOURO", txt_Logradouro.Text.ValidacaoString());
-                    Comm.Parameters.AddWithValue("@NUMERODARESIDENCIA", txt_NumeroR.Text.ValidacaoString());
-                    Comm.Parameters.AddWithValue("@CEP", txt_CEP.Text.ValidacaoString());
-                    Comm.Parameters.AddWithValue("@CIDADE", txt_Cidade.Text.ValidacaoString());
-                    Comm.Parameters.AddWithValue("@ESTADO", txt_Estado.Text.ValidacaoString());
+                    Comm.Parameters.AddWithValue("@NUMERODACONTA", accountNumber);
+                    Comm.Parameters.AddWithValue("@LOGRADOURO", publicPlace.ValidacaoString());
+                    Comm.Parameters.AddWithValue("@NUMERODARESIDENCIA", houseNumber.ValidacaoString());
+                    Comm.Parameters.AddWithValue("@CEP", cep.ValidacaoString());
+                    Comm.Parameters.AddWithValue("@CIDADE", city.ValidacaoString());
+                    Comm.Parameters.AddWithValue("@ESTADO", state.ValidacaoString());
+                    
+                    Comm.ExecuteNonQuery();
+                }
+                catch (Exception Ex)
+                {
+                    MessageBox.Show(Ex.Message);
+                }
+                finally
+                {                    
+                    Conn.Close();
+                    //Conn = null;
+                    Comm = null;                    
+                }
+            }
+        }
+    }
+    //exclui uma conta
+    class DeleteData : ConnectionDB
+    {
+        public void DeleteDatabase(string accountNumber, string password)
+        {
+            using (Comm = new MySqlCommand())
+            {
+                try
+                {
+                    Conn.Open();
+                    string instructionInsertSql = "DELETE FROM CONTABANCARIA WHERE NUMERODACONTA = @NUMERODACONTA"; Comm.CommandText = instructionInsertSql;
+                    Comm.CommandText = instructionInsertSql;
+                    Comm.CommandType = CommandType.Text;
+                    Comm.Connection = Conn;
 
-                    Conexao.Open();
+                    Comm.Parameters.AddWithValue("@NUMERODACONTA", int.Parse(accountNumber));
 
-                    Comando.ExecuteNonQuery();
+                    
+
+                    Comm.ExecuteNonQuery();
                 }
                 catch (Exception Ex)
                 {
@@ -202,11 +237,10 @@ namespace WindowsFormsApp3.Model
                 }
                 finally
                 {
-                    MessageBox.Show("Dados salvos com sucesso!");
-                    Conexao.Close();
-                    Conexao = null;
-                    Comando = null;
-                    Close();
+
+                    MessageBox.Show("Conta excluida con sucesso!");
+                    Conn.Close();
+                    Comm = null;
                 }
             }
         }

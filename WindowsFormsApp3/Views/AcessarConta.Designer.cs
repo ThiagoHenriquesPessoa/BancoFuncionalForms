@@ -31,8 +31,8 @@ namespace WindowsFormsApp3.Views
         {
             this.btn_ECCancelar = new System.Windows.Forms.Button();
             this.btn_ECConfirmar = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txb_SAcessar = new System.Windows.Forms.TextBox();
+            this.txb_NCAcessar = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btn_Fecha = new System.Windows.Forms.Label();
@@ -77,19 +77,19 @@ namespace WindowsFormsApp3.Views
             this.btn_ECConfirmar.UseVisualStyleBackColor = false;
             this.btn_ECConfirmar.Click += new System.EventHandler(this.btn_ECConfirmar_Click);
             // 
-            // textBox3
+            // txb_SAcessar
             // 
-            this.textBox3.Location = new System.Drawing.Point(170, 91);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(164, 20);
-            this.textBox3.TabIndex = 39;
+            this.txb_SAcessar.Location = new System.Drawing.Point(170, 91);
+            this.txb_SAcessar.Name = "txb_SAcessar";
+            this.txb_SAcessar.Size = new System.Drawing.Size(164, 20);
+            this.txb_SAcessar.TabIndex = 39;
             // 
-            // textBox2
+            // txb_NCAcessar
             // 
-            this.textBox2.Location = new System.Drawing.Point(170, 65);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(164, 20);
-            this.textBox2.TabIndex = 38;
+            this.txb_NCAcessar.Location = new System.Drawing.Point(170, 65);
+            this.txb_NCAcessar.Name = "txb_NCAcessar";
+            this.txb_NCAcessar.Size = new System.Drawing.Size(164, 20);
+            this.txb_NCAcessar.TabIndex = 38;
             // 
             // label4
             // 
@@ -144,8 +144,8 @@ namespace WindowsFormsApp3.Views
             this.panel1.Controls.Add(this.btn_ECCancelar);
             this.panel1.Controls.Add(this.btn_ECConfirmar);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.textBox3);
-            this.panel1.Controls.Add(this.textBox2);
+            this.panel1.Controls.Add(this.txb_SAcessar);
+            this.panel1.Controls.Add(this.txb_NCAcessar);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -182,8 +182,8 @@ namespace WindowsFormsApp3.Views
 
         private System.Windows.Forms.Button btn_ECCancelar;
         private System.Windows.Forms.Button btn_ECConfirmar;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txb_SAcessar;
+        private System.Windows.Forms.TextBox txb_NCAcessar;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label btn_Fecha;

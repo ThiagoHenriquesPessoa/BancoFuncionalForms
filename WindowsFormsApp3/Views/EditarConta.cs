@@ -27,7 +27,7 @@ namespace WindowsFormsApp3.Views
         CheckData ED = new CheckData();
         public EditarConta()
         {
-            InitializeComponent();
+            InitializeComponent();            
         }
         private void AbrirFormPainel(object Formhijo)
         {
@@ -52,6 +52,7 @@ namespace WindowsFormsApp3.Views
                 txb_EdSenha.ReadOnly = true;
                 btn_ECConfirmar.Visible = false;
                 btn_ECCancelar.Visible = false;
+
                 AbrirFormPainel(new EdConta(txb_EdNConta.Text));
             }
         }
@@ -59,6 +60,11 @@ namespace WindowsFormsApp3.Views
         private void btn_Fecha_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void EditarConta_Load(object sender, EventArgs e)
+        {
+            
         }
     }
 }
