@@ -121,55 +121,6 @@ namespace WindowsFormsApp3.Model
             }
         }
     }
-    //separa os campos da conta que podem ser editados
-    class EditData : ConnectionDB
-    {
-        private string PublicPlace;
-        private string HouseNumber;
-        private string Cep;
-        private string City;
-        private string State;
-
-        public string EditDatabase(string accountNumber)
-        {
-
-            using (Comm = new MySqlCommand())
-            {
-                try
-                {
-                    Conn.Open();
-                    string instructionInsertSql = "SELECT * FROM CONTABANCARIA WHERE NUMERODACONTA = @NUMERODACONTA";
-                    Comm.CommandText = instructionInsertSql;
-                    Comm.CommandType = CommandType.Text;
-                    Comm.Connection = Conn;
-
-                    Comm.Parameters.AddWithValue("@NUMERODACONTA", accountNumber);
-
-                    //preenche os campos com os respectivos dados
-                    Dr = Comm.ExecuteReader();
-                    Dr.Read();
-
-                    PublicPlace = Convert.ToString(Dr["Logradouro"]);
-                    HouseNumber = Convert.ToString(Dr["NumeroDaResidencia"]);
-                    Cep = Convert.ToString(Dr["CEP"]);
-                    City = Convert.ToString(Dr["Cidade"]);
-                    State = Convert.ToString(Dr["Estado"]);
-                }
-                catch (Exception Ex)
-                {
-                    MessageBox.Show(Ex.Message);
-                }
-                finally
-                {
-                    
-                    Conn.Close();
-                    //Conn = null;
-                    Comm = null;
-                }
-                return PublicPlace + "," + HouseNumber + "," + Cep + "," + City + "," + State;
-            }
-        }
-    }
     //salva os dados que foram editados
     class SaveData : ConnectionDB
     {
@@ -178,10 +129,7 @@ namespace WindowsFormsApp3.Model
             using (Comm = new MySqlCommand())
             {
                 try
-                {
-                    //string connectionString = "server=localhost;user id=Thiago;database=contafuncionaldb; password=Rayane18@; port=3306";
-
-                    //Conn = new MySqlConnection(connectionString);
+                {                    
                     Conn.Open();
                     string instructionInsertSql = "UPDATE CONTABANCARIA SET LOGRADOURO = @LOGRADOURO, NUMERODARESIDENCIA = @NUMERODARESIDENCIA, CEP = @CEP, CIDADE = @CIDADE, ESTADO = @ESTADO WHERE NUMERODACONTA = @NUMERODACONTA";
                     Comm.CommandText = instructionInsertSql;
@@ -194,7 +142,7 @@ namespace WindowsFormsApp3.Model
                     Comm.Parameters.AddWithValue("@CEP", cep.ValidacaoString());
                     Comm.Parameters.AddWithValue("@CIDADE", city.ValidacaoString());
                     Comm.Parameters.AddWithValue("@ESTADO", state.ValidacaoString());
-                    
+
                     Comm.ExecuteNonQuery();
                 }
                 catch (Exception Ex)
@@ -202,10 +150,10 @@ namespace WindowsFormsApp3.Model
                     MessageBox.Show(Ex.Message);
                 }
                 finally
-                {                    
+                {
                     Conn.Close();
                     //Conn = null;
-                    Comm = null;                    
+                    Comm = null;
                 }
             }
         }
@@ -227,7 +175,7 @@ namespace WindowsFormsApp3.Model
 
                     Comm.Parameters.AddWithValue("@NUMERODACONTA", int.Parse(accountNumber));
 
-                    
+
 
                     Comm.ExecuteNonQuery();
                 }
@@ -245,5 +193,101 @@ namespace WindowsFormsApp3.Model
             }
         }
     }
+    class AccessAccount : ConnectionDB
+    {
+        private string NameClient;
+        private string Balance;
+        private string PublicPlace;
+        private string HouseNumber;
+        private string Cep;
+        private string City;
+        private string State;
+        public string AccessData(string accountNumber, int number)
+        {
 
+            using (Comm = new MySqlCommand())
+            {
+
+
+                try
+                {
+                    Conn.Open();
+                    string instructionInsertSql = "SELECT * FROM CONTABANCARIA WHERE NUMERODACONTA = @NUMERODACONTA";
+                    Comm.CommandText = instructionInsertSql;
+                    Comm.CommandType = CommandType.Text;
+                    Comm.Connection = Conn;
+
+                    Comm.Parameters.AddWithValue("@NUMERODACONTA", accountNumber);
+
+                    Dr = Comm.ExecuteReader();
+                    Dr.Read();
+
+                    NameClient = Convert.ToString(Dr["NOME"]);
+                    Balance = Convert.ToString(Dr["SALDO"]);
+                    PublicPlace = Convert.ToString(Dr["Logradouro"]);
+                    HouseNumber = Convert.ToString(Dr["NumeroDaResidencia"]);
+                    Cep = Convert.ToString(Dr["CEP"]);
+                    City = Convert.ToString(Dr["Cidade"]);
+                    State = Convert.ToString(Dr["Estado"]);
+
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    Conn.Close();
+                    //Conn = null;
+                    Comm = null;
+                }
+                if (number == 1)
+                {
+                    return PublicPlace + "," + HouseNumber + "," + Cep + "," + City + "," + State;
+                }
+                else if(number == 2)
+                {
+                    return NameClient + "," + Balance;
+                }
+                else
+                {
+                    return Balance;
+                }
+                
+            }
+        }
+
+    }
+    //Deposito um valor na conta
+    class DepositAccount : ConnectionDB
+    {
+        public void DepositAmount(string accountNumber, string newBalance)
+        {
+            using (Comm = new MySqlCommand())
+            {
+                try
+                {
+                    Conn.Open();
+                    string instructionInsertSql = "UPDATE CONTABANCARIA SET SALDO = @SALDO WHERE NUMERODACONTA = @NUMERODACONTA";
+                    Comm.CommandText = instructionInsertSql;
+                    Comm.Connection = Conn;
+
+                    Comm.Parameters.AddWithValue("@NUMERODACONTA", accountNumber);
+                    Comm.Parameters.AddWithValue("@SALDO", newBalance);
+
+                    Comm.ExecuteNonQuery();
+                }
+                catch (Exception Ex)
+                {
+                    MessageBox.Show(Ex.Message);
+                }
+                finally
+                {
+                    Conn.Close();
+                    Comm = null;
+                }
+            }
+        }
+    }
 }

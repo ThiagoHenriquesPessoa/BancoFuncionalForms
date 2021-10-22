@@ -51,7 +51,7 @@ namespace WindowsFormsApp3.Views
                 txb_EdNConta.ReadOnly = true;
                 txb_EdSenha.ReadOnly = true;
                 btn_ECConfirmar.Visible = false;
-                btn_ECCancelar.Visible = false;
+                btn_ECCancelar.Visible = false;                
 
                 AbrirFormPainel(new EdConta(txb_EdNConta.Text));
             }

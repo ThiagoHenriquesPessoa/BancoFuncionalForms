@@ -17,14 +17,14 @@ namespace WindowsFormsApp3.Views
 
         private string AccountNumber;
 
-        EditData ED = new EditData();
+        AccessAccount AA = new AccessAccount();
         SaveData SD = new SaveData();
         public EdConta(string numeroConta)
         {
 
             AccountNumber = numeroConta;
             InitializeComponent();
-            string[] data = ED.EditDatabase(AccountNumber).Split(',');
+            string[] data = AA.AccessData(AccountNumber, 1).Split(',');
 
             txt_Logradouro.Text = data[0];
             txt_NumeroR.Text = data[1];

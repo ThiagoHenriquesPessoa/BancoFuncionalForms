@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp3.Model;
 
@@ -14,6 +7,7 @@ namespace WindowsFormsApp3.Views
     public partial class AcessarConta : Form
     {
         CheckData CD = new CheckData();
+        AccessAccount AA = new AccessAccount();
         public AcessarConta()
         {
             InitializeComponent();
@@ -36,8 +30,11 @@ namespace WindowsFormsApp3.Views
         {
             bool check = CD.CheckDatabase(txb_NCAcessar.Text, txb_SAcessar.Text);
             if (check == true)
-            {
-                AbrirFormPainel(new Conta());
+            {                
+                string[] data = AA.AccessData(txb_NCAcessar.Text, 2).Split(',');
+                string name = data[0];
+                string balance = data[1];
+                AbrirFormPainel(new Conta(txb_NCAcessar.Text, name, balance));
             }
             
         }

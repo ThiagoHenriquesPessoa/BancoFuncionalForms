@@ -55,16 +55,16 @@
     <Compile Include="Views\AcessarConta.Designer.cs">
       <DependentUpon>AcessarConta.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Conta.cs">
+    <Compile Include="Views\ViewsSecondary\Conta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Conta.Designer.cs">
+    <Compile Include="Views\ViewsSecondary\Conta.Designer.cs">
       <DependentUpon>Conta.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\EdConta.cs">
+    <Compile Include="Views\ViewsSecondary\EdConta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\EdConta.Designer.cs">
+    <Compile Include="Views\ViewsSecondary\EdConta.Designer.cs">
       <DependentUpon>EdConta.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\EditarConta.cs">
@@ -99,13 +99,19 @@
     <Compile Include="Views\ListaDeContas.Designer.cs">
       <DependentUpon>ListaDeContas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\ViewsSecondary\Deposit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ViewsSecondary\Deposit.Designer.cs">
+      <DependentUpon>Deposit.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Views\AcessarConta.resx">
       <DependentUpon>AcessarConta.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Conta.resx">
+    <EmbeddedResource Include="Views\ViewsSecondary\Conta.resx">
       <DependentUpon>Conta.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\EdConta.resx">
+    <EmbeddedResource Include="Views\ViewsSecondary\EdConta.resx">
       <DependentUpon>EdConta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\EditarConta.resx">
@@ -131,6 +137,9 @@
     </Compile>
     <EmbeddedResource Include="Views\ListaDeContas.resx">
       <DependentUpon>ListaDeContas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ViewsSecondary\Deposit.resx">
+      <DependentUpon>Deposit.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
