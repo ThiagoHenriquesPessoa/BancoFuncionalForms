@@ -58,6 +58,7 @@ namespace WindowsFormsApp3.Views
             this.btn_ECCancelar.TabIndex = 41;
             this.btn_ECCancelar.Text = "Cancelar";
             this.btn_ECCancelar.UseVisualStyleBackColor = false;
+            this.btn_ECCancelar.Click += new System.EventHandler(this.btn_ECCancelar_Click);
             // 
             // btn_ECConfirmar
             // 

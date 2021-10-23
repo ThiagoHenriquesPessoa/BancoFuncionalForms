@@ -32,8 +32,7 @@ namespace WindowsFormsApp3.Views
 
         private void btn_ECCancelar_Click(object sender, EventArgs e)
         {
-            txb_NumeroDC.Clear();
-            txb_Senha.Clear();
+            Close();
         }
 
         private void ExcluirConta_Load(object sender, EventArgs e)

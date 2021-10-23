@@ -14,6 +14,8 @@ namespace WindowsFormsApp3.Model
         //responsavel pelas instruções a serem executadas
         public static MySqlCommand Comm;
 
+        public static MySqlDataAdapter Ad;
+
         public static MySqlDataReader Dr;
 
         //Função de conexão com o banco
@@ -28,6 +30,33 @@ namespace WindowsFormsApp3.Model
             string connectionString = "server=" + server + ";user id=" + useId + ";database=" + dataBase + "; password=" + password + "; port=" + port;
 
             Conn = new MySqlConnection(connectionString);
+        }
+    }
+    class DataList : ConnectionDB
+    {
+        public DataTable AccountList()
+        {
+            DataTable DT = new DataTable();
+                try
+                {
+                    Conn.Open();
+                    string instructionInsertSql = "SELECT NUMERODACONTA, NOME FROM contafuncionaldb.contabancaria";
+                    Comm = new MySqlCommand(instructionInsertSql, Conn);
+                    Ad = new MySqlDataAdapter(instructionInsertSql, Conn);
+                                        
+                    Ad.Fill(DT);
+
+                }
+                catch (Exception Ex)
+                {
+                    MessageBox.Show(Ex.Message);
+                }
+                finally
+                {
+                    Conn.Close();
+                    Comm = null;
+                }
+                return DT;
         }
     }
     //Classe para inserir os dados
@@ -194,7 +223,7 @@ namespace WindowsFormsApp3.Model
         }
     }
     class AccessAccount : ConnectionDB
-    {
+    {        
         private string NameClient;
         private string Balance;
         private string PublicPlace;
@@ -255,14 +284,15 @@ namespace WindowsFormsApp3.Model
                     return Balance;
                 }
                 
+                
             }
         }
 
     }
     //Deposito um valor na conta
-    class DepositAccount : ConnectionDB
+    class Balance : ConnectionDB
     {
-        public void DepositAmount(string accountNumber, string newBalance)
+        public void BalanceAmount(string accountNumber, string newBalance)
         {
             using (Comm = new MySqlCommand())
             {
@@ -275,6 +305,37 @@ namespace WindowsFormsApp3.Model
 
                     Comm.Parameters.AddWithValue("@NUMERODACONTA", accountNumber);
                     Comm.Parameters.AddWithValue("@SALDO", newBalance);
+
+                    Comm.ExecuteNonQuery();
+                }
+                catch (Exception Ex)
+                {
+                    MessageBox.Show(Ex.Message);
+                }
+                finally
+                {
+                    Conn.Close();
+                    Comm = null;
+                }
+            }
+        }
+    }
+    class NewPassword : ConnectionDB
+    {
+        public void SaveNewPassword(string accountNumber, string password)
+        {
+            using (Comm = new MySqlCommand())
+            {
+                try
+                {
+                    Conn.Open();
+                    string instructionInsertSql = "UPDATE CONTABANCARIA SET SENHA = @SENHA WHERE NUMERODACONTA = @NUMERODACONTA";
+                    Comm.CommandText = instructionInsertSql;
+                    Comm.CommandType = CommandType.Text;
+                    Comm.Connection = Conn;
+
+                    Comm.Parameters.AddWithValue("@NUMERODACONTA", accountNumber);
+                    Comm.Parameters.AddWithValue("@SENHA", password.SetaSenha());
 
                     Comm.ExecuteNonQuery();
                 }

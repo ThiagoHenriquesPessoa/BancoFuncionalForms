@@ -37,7 +37,7 @@ namespace WindowsFormsApp3.Views.ViewsSecondary
             // 
             // txb_ACDepositAmount
             // 
-            this.txb_ACDepositAmount.Location = new System.Drawing.Point(149, 41);
+            this.txb_ACDepositAmount.Location = new System.Drawing.Point(150, 42);
             this.txb_ACDepositAmount.Name = "txb_ACDepositAmount";
             this.txb_ACDepositAmount.Size = new System.Drawing.Size(164, 20);
             this.txb_ACDepositAmount.TabIndex = 47;
@@ -47,7 +47,7 @@ namespace WindowsFormsApp3.Views.ViewsSecondary
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(201)))), ((int)(((byte)(48)))));
-            this.label3.Location = new System.Drawing.Point(19, 40);
+            this.label3.Location = new System.Drawing.Point(20, 41);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(124, 19);
             this.label3.TabIndex = 46;
@@ -63,7 +63,7 @@ namespace WindowsFormsApp3.Views.ViewsSecondary
             this.btn_ACConfirmar.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_ACConfirmar.ForeColor = System.Drawing.Color.White;
             this.btn_ACConfirmar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_ACConfirmar.Location = new System.Drawing.Point(219, 113);
+            this.btn_ACConfirmar.Location = new System.Drawing.Point(220, 92);
             this.btn_ACConfirmar.Name = "btn_ACConfirmar";
             this.btn_ACConfirmar.Size = new System.Drawing.Size(120, 33);
             this.btn_ACConfirmar.TabIndex = 51;
@@ -81,7 +81,7 @@ namespace WindowsFormsApp3.Views.ViewsSecondary
             this.btn_ACCancelar.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_ACCancelar.ForeColor = System.Drawing.Color.White;
             this.btn_ACCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_ACCancelar.Location = new System.Drawing.Point(49, 113);
+            this.btn_ACCancelar.Location = new System.Drawing.Point(50, 92);
             this.btn_ACCancelar.Name = "btn_ACCancelar";
             this.btn_ACCancelar.Size = new System.Drawing.Size(120, 33);
             this.btn_ACCancelar.TabIndex = 52;
@@ -93,7 +93,7 @@ namespace WindowsFormsApp3.Views.ViewsSecondary
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(400, 180);
+            this.ClientSize = new System.Drawing.Size(400, 150);
             this.Controls.Add(this.btn_ACConfirmar);
             this.Controls.Add(this.btn_ACCancelar);
             this.Controls.Add(this.txb_ACDepositAmount);

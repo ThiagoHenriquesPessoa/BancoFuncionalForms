@@ -16,56 +16,22 @@ namespace WindowsFormsApp3.Views
     public partial class ListaDeContas : Form
     {
         //Conexão com o banco
-        public static MySqlConnection Conexao;
+        public static MySqlConnection Conn;
 
-        //responsavel pelas instruções a serem executadas
-        public static MySqlCommand Comando;
+        public static MySqlCommand Comm;
 
-        public static MySqlDataAdapter Adapter;
+        public static MySqlDataAdapter Ad;
 
-        public DataTable dataTable = new DataTable();
+        DataList DL = new DataList();
 
-        
+
+
         public ListaDeContas()
         {
             InitializeComponent();
-            
-            CarregarDados();
-
-            try
-            {
-                Conexao = new MySqlConnection("server=localhost;user id=Thiago;database=contafuncionaldb; password=Rayane18@; port=3306");
-                //Exclui uma conta no banco de dados 
-                string strSql = "SELECT NUMERODACONTA, NOME FROM CONTABANCARIA";
-                Adapter = new MySqlDataAdapter(strSql, Conexao);
-
-                
-
-                Adapter.Fill(dataTable);
-
-                dgv_ListaDeDados.DataSource = Adapter;
-
-            }
-            catch (Exception Ex)
-            {
-                MessageBox.Show(Ex.Message);
-            }
-            finally
-            {
-                Conexao.Close();
-                Conexao = null;
-                Comando = null;
-            }
-        }
-
-        private void CarregarDados()
-        {
-            dataTable.Columns.Add("Número da Conta", typeof(int));
-            dataTable.Columns.Add("Nome do cliente", typeof(string));
-
-            dataTable.Rows.Add(new object[] { 123465, "Thiago"});
-
-            dgv_ListaDeDados.DataSource = dataTable;
+            DataTable Dt = new DataTable();
+            Dt = DL.AccountList();
+            dgv_ListaDeDados.DataSource = Dt;
         }
 
         private void btn_Fecha_Click(object sender, EventArgs e)

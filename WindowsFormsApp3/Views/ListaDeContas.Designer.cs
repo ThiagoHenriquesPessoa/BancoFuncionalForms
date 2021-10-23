@@ -65,7 +65,9 @@ namespace WindowsFormsApp3.Views
             // 
             this.dgv_ListaDeDados.AllowUserToAddRows = false;
             this.dgv_ListaDeDados.AllowUserToDeleteRows = false;
+            this.dgv_ListaDeDados.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dgv_ListaDeDados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_ListaDeDados.GridColor = System.Drawing.SystemColors.ButtonShadow;
             this.dgv_ListaDeDados.Location = new System.Drawing.Point(12, 51);
             this.dgv_ListaDeDados.Name = "dgv_ListaDeDados";
             this.dgv_ListaDeDados.ReadOnly = true;

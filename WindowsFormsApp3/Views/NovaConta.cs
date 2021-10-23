@@ -61,11 +61,11 @@ namespace WindowsFormsApp3.Views
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            Limpa();
+            Close();
         }
         private void btn_Fecha_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         } 
     }
 }

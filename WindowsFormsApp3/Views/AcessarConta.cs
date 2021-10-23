@@ -34,6 +34,11 @@ namespace WindowsFormsApp3.Views
                 string[] data = AA.AccessData(txb_NCAcessar.Text, 2).Split(',');
                 string name = data[0];
                 string balance = data[1];
+
+                txb_NCAcessar.ReadOnly = true;
+                txb_SAcessar.ReadOnly = true;
+                btn_ECConfirmar.Visible = false;
+
                 AbrirFormPainel(new Conta(txb_NCAcessar.Text, name, balance));
             }
             
@@ -42,6 +47,11 @@ namespace WindowsFormsApp3.Views
         private void btn_Fecha_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btn_ECCancelar_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

@@ -62,9 +62,13 @@ namespace WindowsFormsApp3.Views
             Close();
         }
 
+        private void btn_ECCancelar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
         private void EditarConta_Load(object sender, EventArgs e)
         {
-            
+
         }
     }
 }

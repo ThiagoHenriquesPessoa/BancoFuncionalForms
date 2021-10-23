@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{776418A4-82F2-4C1C-8A1E-2D97FB3FD653}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>WindowsFormsApp3</RootNamespace>
-    <AssemblyName>WindowsFormsApp3</AssemblyName>
+    <RootNamespace>BancoFuncional</RootNamespace>
+    <AssemblyName>BancoFuncional</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -99,11 +99,29 @@
     <Compile Include="Views\ListaDeContas.Designer.cs">
       <DependentUpon>ListaDeContas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\ViewsSecondary\Deposit.cs">
+    <Compile Include="Views\ViewsSecondary\ViewaTertiary\AlterarSenha.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\ViewsSecondary\Deposit.Designer.cs">
+    <Compile Include="Views\ViewsSecondary\ViewaTertiary\AlterarSenha.Designer.cs">
+      <DependentUpon>AlterarSenha.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewsSecondary\ViewaTertiary\Deposit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ViewsSecondary\ViewaTertiary\Deposit.Designer.cs">
       <DependentUpon>Deposit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewsSecondary\ViewaTertiary\Sacar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ViewsSecondary\ViewaTertiary\Sacar.Designer.cs">
+      <DependentUpon>Sacar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewsSecondary\ViewaTertiary\Transferir.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ViewsSecondary\ViewaTertiary\Transferir.Designer.cs">
+      <DependentUpon>Transferir.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Views\AcessarConta.resx">
       <DependentUpon>AcessarConta.cs</DependentUpon>
@@ -134,12 +152,22 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Views\ListaDeContas.resx">
       <DependentUpon>ListaDeContas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\ViewsSecondary\Deposit.resx">
+    <EmbeddedResource Include="Views\ViewsSecondary\ViewaTertiary\AlterarSenha.resx">
+      <DependentUpon>AlterarSenha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ViewsSecondary\ViewaTertiary\Deposit.resx">
       <DependentUpon>Deposit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ViewsSecondary\ViewaTertiary\Sacar.resx">
+      <DependentUpon>Sacar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ViewsSecondary\ViewaTertiary\Transferir.resx">
+      <DependentUpon>Transferir.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
