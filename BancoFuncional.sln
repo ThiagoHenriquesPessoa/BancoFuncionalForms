@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.31424.327
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BancoFuncional", "WindowsFormsApp3\BancoFuncional.csproj", "{776418A4-82F2-4C1C-8A1E-2D97FB3FD653}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "InstaladorBancoFuncional", "Instalador\InstaladorBancoFuncional\InstaladorBancoFuncional.vdproj", "{C1DB749E-41BB-4660-82B0-4B9193AAC8D1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,8 @@ Global
 		{776418A4-82F2-4C1C-8A1E-2D97FB3FD653}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{776418A4-82F2-4C1C-8A1E-2D97FB3FD653}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{776418A4-82F2-4C1C-8A1E-2D97FB3FD653}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1DB749E-41BB-4660-82B0-4B9193AAC8D1}.Debug|Any CPU.ActiveCfg = Debug
+		{C1DB749E-41BB-4660-82B0-4B9193AAC8D1}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

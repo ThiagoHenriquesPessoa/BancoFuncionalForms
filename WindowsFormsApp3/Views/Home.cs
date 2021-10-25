@@ -9,14 +9,17 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using WindowsFormsApp3.Views;
+using BancoFuncional.Model;
 
 namespace WindowsFormsApp3
 {
     public partial class Home : Form
     {
+        ToCreateDB CreatDB = new ToCreateDB();
         public Home()
         {
             InitializeComponent();
+            CreatDB.ToCreateDatabase();
         }
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
@@ -27,7 +30,7 @@ namespace WindowsFormsApp3
         {
             if (MenuVertical.Width==200)
             {
-                MenuVertical.Width = 60;
+                MenuVertical.Width = 55;
             }
             else
             {
@@ -89,6 +92,41 @@ namespace WindowsFormsApp3
         private void btn_EditarC_Click(object sender, EventArgs e)
         {
             AbrirFormPainel(new EditarConta());
+        }
+
+        private void MenuVertical_MouseEnter(object sender, EventArgs e)
+        {
+            MenuVertical.Width = 200;
+        }               
+
+        private void PainelContencedor_MouseEnter(object sender, EventArgs e)
+        {
+            MenuVertical.Width = 55;
+        }
+
+        private void btn_ListaDeContas_MouseEnter(object sender, EventArgs e)
+        {
+            MenuVertical.Width = 200;
+        }
+
+        private void btn_NovaConta_MouseEnter(object sender, EventArgs e)
+        {
+            MenuVertical.Width = 200;
+        }
+
+        private void btn_ExcluirConta_MouseEnter(object sender, EventArgs e)
+        {
+            MenuVertical.Width = 200;
+        }
+
+        private void btn_EditarC_MouseEnter(object sender, EventArgs e)
+        {
+            MenuVertical.Width = 200;
+        }
+
+        private void btn_AcessarConta_MouseEnter(object sender, EventArgs e)
+        {
+            MenuVertical.Width = 200;
         }
     }
 }

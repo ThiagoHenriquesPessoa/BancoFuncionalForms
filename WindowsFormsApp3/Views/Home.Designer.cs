@@ -1,4 +1,7 @@
 ﻿
+using System;
+using System.Windows.Forms;
+
 namespace WindowsFormsApp3
 {
     partial class Home
@@ -62,8 +65,9 @@ namespace WindowsFormsApp3
             this.MenuVertical.Dock = System.Windows.Forms.DockStyle.Left;
             this.MenuVertical.Location = new System.Drawing.Point(0, 0);
             this.MenuVertical.Name = "MenuVertical";
-            this.MenuVertical.Size = new System.Drawing.Size(200, 650);
+            this.MenuVertical.Size = new System.Drawing.Size(55, 650);
             this.MenuVertical.TabIndex = 0;
+            this.MenuVertical.MouseEnter += new System.EventHandler(this.MenuVertical_MouseEnter);
             // 
             // btn_EditarC
             // 
@@ -82,6 +86,7 @@ namespace WindowsFormsApp3
             this.btn_EditarC.Text = "Editar Conta";
             this.btn_EditarC.UseVisualStyleBackColor = true;
             this.btn_EditarC.Click += new System.EventHandler(this.btn_EditarC_Click);
+            this.btn_EditarC.MouseEnter += new System.EventHandler(this.btn_EditarC_MouseEnter);
             // 
             // btn_AcessarConta
             // 
@@ -100,6 +105,7 @@ namespace WindowsFormsApp3
             this.btn_AcessarConta.Text = "Acessar Conta";
             this.btn_AcessarConta.UseVisualStyleBackColor = true;
             this.btn_AcessarConta.Click += new System.EventHandler(this.btn_AcessarConta_Click);
+            this.btn_AcessarConta.MouseEnter += new System.EventHandler(this.btn_AcessarConta_MouseEnter);
             // 
             // btn_ExcluirConta
             // 
@@ -118,6 +124,7 @@ namespace WindowsFormsApp3
             this.btn_ExcluirConta.Text = "Excluir Conta";
             this.btn_ExcluirConta.UseVisualStyleBackColor = true;
             this.btn_ExcluirConta.Click += new System.EventHandler(this.btn_ExcluirConta_Click);
+            this.btn_ExcluirConta.MouseEnter += new System.EventHandler(this.btn_ExcluirConta_MouseEnter);
             // 
             // btn_NovaConta
             // 
@@ -136,6 +143,7 @@ namespace WindowsFormsApp3
             this.btn_NovaConta.Text = "Nova Conta";
             this.btn_NovaConta.UseVisualStyleBackColor = true;
             this.btn_NovaConta.Click += new System.EventHandler(this.btn_NovaConta_Click);
+            this.btn_NovaConta.MouseEnter += new System.EventHandler(this.btn_NovaConta_MouseEnter);
             // 
             // btn_ListaDeContas
             // 
@@ -154,6 +162,7 @@ namespace WindowsFormsApp3
             this.btn_ListaDeContas.Text = "Lista de Contas";
             this.btn_ListaDeContas.UseVisualStyleBackColor = true;
             this.btn_ListaDeContas.Click += new System.EventHandler(this.btn_NovaRenda_Click);
+            this.btn_ListaDeContas.MouseEnter += new System.EventHandler(this.btn_ListaDeContas_MouseEnter);
             // 
             // pictureBox1
             // 
@@ -162,7 +171,7 @@ namespace WindowsFormsApp3
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(200, 50);
+            this.pictureBox1.Size = new System.Drawing.Size(55, 50);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -173,9 +182,9 @@ namespace WindowsFormsApp3
             this.BarraDeTitulo.Controls.Add(this.BtnFechar);
             this.BarraDeTitulo.Controls.Add(this.BtnSlide);
             this.BarraDeTitulo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.BarraDeTitulo.Location = new System.Drawing.Point(200, 0);
+            this.BarraDeTitulo.Location = new System.Drawing.Point(55, 0);
             this.BarraDeTitulo.Name = "BarraDeTitulo";
-            this.BarraDeTitulo.Size = new System.Drawing.Size(400, 50);
+            this.BarraDeTitulo.Size = new System.Drawing.Size(545, 50);
             this.BarraDeTitulo.TabIndex = 1;
             this.BarraDeTitulo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BarraDeTitulo_MouseDown);
             // 
@@ -184,7 +193,7 @@ namespace WindowsFormsApp3
             this.BtnMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnMinimizar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnMinimizar.Image = ((System.Drawing.Image)(resources.GetObject("BtnMinimizar.Image")));
-            this.BtnMinimizar.Location = new System.Drawing.Point(312, 9);
+            this.BtnMinimizar.Location = new System.Drawing.Point(457, 9);
             this.BtnMinimizar.Name = "BtnMinimizar";
             this.BtnMinimizar.Size = new System.Drawing.Size(35, 35);
             this.BtnMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -197,7 +206,7 @@ namespace WindowsFormsApp3
             this.BtnFechar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnFechar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnFechar.Image = ((System.Drawing.Image)(resources.GetObject("BtnFechar.Image")));
-            this.BtnFechar.Location = new System.Drawing.Point(353, 9);
+            this.BtnFechar.Location = new System.Drawing.Point(498, 9);
             this.BtnFechar.Name = "BtnFechar";
             this.BtnFechar.Size = new System.Drawing.Size(35, 35);
             this.BtnFechar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -223,10 +232,11 @@ namespace WindowsFormsApp3
             this.PainelContencedor.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PainelContencedor.BackgroundImage")));
             this.PainelContencedor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.PainelContencedor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PainelContencedor.Location = new System.Drawing.Point(200, 50);
+            this.PainelContencedor.Location = new System.Drawing.Point(55, 50);
             this.PainelContencedor.Name = "PainelContencedor";
-            this.PainelContencedor.Size = new System.Drawing.Size(400, 600);
+            this.PainelContencedor.Size = new System.Drawing.Size(545, 600);
             this.PainelContencedor.TabIndex = 2;
+            this.PainelContencedor.MouseEnter += new System.EventHandler(this.PainelContencedor_MouseEnter);
             // 
             // Home
             // 

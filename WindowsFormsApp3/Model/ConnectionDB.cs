@@ -32,7 +32,7 @@ namespace WindowsFormsApp3.Model
             Conn = new MySqlConnection(connectionString);
         }
     }
-    class DataList : ConnectionDB
+    class DataList  : ConnectionDB
     {
         public DataTable AccountList()
         {
@@ -96,7 +96,6 @@ namespace WindowsFormsApp3.Model
                 finally
                 {
                     Conn.Close();
-                    //Conn = null;
                     Comm = null;
                 }
             }
