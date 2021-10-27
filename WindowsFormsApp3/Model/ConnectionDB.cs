@@ -21,13 +21,13 @@ namespace WindowsFormsApp3.Model
         //Função de conexão com o banco
         public ConnectionDB()
         {
-            string server = "localhost";
-            string dataBase = "contafuncionaldb";
-            string useId = "Thiago";
-            string password = "Rayane18@";
-            string port = "3306";
+            string server = "186.202.152.237";
+            string dataBase = "adpardb";
+            string useId = "adpardb";
+            string password = "adpar2021@";
+            //string port = "3306";
 
-            string connectionString = "server=" + server + ";user id=" + useId + ";database=" + dataBase + "; password=" + password + "; port=" + port;
+            string connectionString = "server=" + server + ";user id=" + useId + ";database=" + dataBase + "; password=" + password;
 
             Conn = new MySqlConnection(connectionString);
         }
@@ -40,7 +40,7 @@ namespace WindowsFormsApp3.Model
                 try
                 {
                     Conn.Open();
-                    string instructionInsertSql = "SELECT NUMERODACONTA, NOME FROM contafuncionaldb.contabancaria";
+                    string instructionInsertSql = "SELECT NUMERODACONTA, NOME FROM CONTABANCARIA";
                     Comm = new MySqlCommand(instructionInsertSql, Conn);
                     Ad = new MySqlDataAdapter(instructionInsertSql, Conn);
                                         

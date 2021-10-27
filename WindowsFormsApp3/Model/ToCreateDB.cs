@@ -15,13 +15,13 @@ namespace BancoFuncional.Model
         //Função de conexão com o banco
         public ConnectionDB()
         {
-            string server = "localhost";
-            string dataBase = "contafuncionaldb";
-            string useId = "Thiago";
-            string password = "Rayane18@";
-            string port = "3306";
+            string server = "186.202.152.237";
+            string dataBase = "adpardb";
+            string useId = "adpardb";
+            string password = "adpar2021@";
+            //string port = "3306";
 
-            string connectionString = "server=" + server + ";user id=" + useId + ";database=" + dataBase + "; password=" + password + "; port=" + port;
+            string connectionString = "server=" + server + ";user id=" + useId + ";database=" + dataBase + "; password=" + password;
 
             Conn = new MySqlConnection(connectionString);
         }
@@ -34,7 +34,7 @@ namespace BancoFuncional.Model
             {
                 //Cria um projeto no banco de dados de nome contafuncionaldb se caso ele já não existir
                 Conn.Open();
-                string instructionProjectSql = "CREATE DATABASE IF NOT EXISTS CONTAFUNCIONALDB; USE CONTAFUNCIONALDB";
+                string instructionProjectSql = "CREATE DATABASE IF NOT EXISTS adpardb; USE adpardb";
                 Comm = new MySqlCommand(instructionProjectSql, Conn);
                 Comm.ExecuteNonQuery();
                 //Cria uma tabela com seus respectivos campos se caso ela já não exista
